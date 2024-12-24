@@ -7,6 +7,20 @@ def main(page: ft.Page):
     page.title= "DataSAM"
     page.theme_mode= "dark"
 
+    personal= ft.ButtonStyle(
+       padding= {
+           ft.MaterialState.HOVERED: 10
+       },
+
+       shadow_color= {
+           ft.MaterialState.HOVERED: 'amber'
+       },
+
+       elevation= {
+           ft.MaterialState.HOVERED: 3
+       }
+    )
+
     linha = ft.Container(
         content=ft.Column(
             controls=[
@@ -20,12 +34,13 @@ def main(page: ft.Page):
                     label="Senha", 
                     password=True, 
                     width=300,
-                    border_radius=20
+                    border_radius=20,
+                    can_reveal_password= True
                 ),
                 ft.Row(
                     controls=[
-                        ft.ElevatedButton(text="Entrar", width=150, icon= ft.icons.LOGIN),
-                        ft.ElevatedButton(text="Cadastrar", width=150, icon= ft.icons.PERSON_ADD)
+                        ft.ElevatedButton(text="Entrar", width=150, icon= ft.icons.LOGIN, style= personal),
+                        ft.ElevatedButton(text="Cadastrar", width=150, icon= ft.icons.PERSON_ADD, style= personal)
                     ],
                     alignment=ft.MainAxisAlignment.CENTER,
                     spacing=10  # Adiciona um espaçamento entre os botões

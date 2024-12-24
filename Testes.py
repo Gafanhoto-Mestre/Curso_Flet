@@ -1,24 +1,54 @@
 import flet as ft
+
 def main(page: ft.Page):
-    container= ft.Container(
-        # height= 300,
-        # padding= 100,
-        bgcolor= ft.colors.AMBER,
-        expand= True,
-        image_src= 'https://flet.dev/img/docs/controls/container/container-diagram.png',
+    page.spacing= 20
+    page.theme_mode= 'light'
+    page.fonts= {
+        'dat': 'fonts/maquina.ttf'
+    } 
 
-        # O COMPONENTE "margin" funciona como se fosse o padding para o container
-        # margin= ft.margin.all(10)
-        # margin= ft.margin.only(top=10, bottom=10)
-        # margin= ft.margin.symmetric(vertical=50, horizontal=10)
-
-        #border= ft.border.all(20, color= ft.colors.RED)
-
-        border_radius= ft.border_radius.all(50)
+    btn1= ft.ElevatedButton(text= 'Primeiro botão')
+    btn2= ft.ElevatedButton(text= 'Segundo botão', disabled= True)
+    btn3= ft.ElevatedButton(text= 'Terceiro botão', icon= ft.icons.SETTINGS)
+    btn4= ft.ElevatedButton(text= 'Quarto botão', bgcolor= ft.colors.AMBER,
+                            color= ft.colors.INDIGO,
+                            icon= ft.icons.PEOPLE,
+                            icon_color= ft.colors.BLACK,
+                            tooltip= 'Olá, Mauro!')
     
+    personalizado = ft.ButtonStyle(
+        color= {
+            ft.MaterialState.HOVERED: ft.colors.RED,
+        },
+
+        bgcolor= {
+            ft.MaterialState.DISABLED: ft.colors.GREEN_ACCENT,
+        },
+        
+        padding= {
+            ft.MaterialState.HOVERED: 10
+        },
+
+        icon_color= {
+            ft.MaterialState.HOVERED: ft.colors.AMBER
+        },
+
+        text_style= {
+            ft.MaterialState.HOVERED: ft.TextStyle(font_family= 'dat')
+        },
+
+        shadow_color= 'yellow',
+        surface_tint_color= "pink",
+        elevation= 5
+
+
+
+
     )
 
+    btn5= ft.ElevatedButton(text= "Personalizado", icon= ft.icons.SETTINGS,
+                            style= personalizado, disabled= False)
 
-    page.add(container)
-ft.app(target=main)
+    page.add(btn1, btn2, btn3, btn4, btn5)
 
+ft.app(main, assets_dir= 'assets')

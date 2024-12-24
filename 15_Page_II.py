@@ -7,6 +7,7 @@ def main(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER  #Alinhamento horizontal
     page.vertical_alignment = ft.MainAxisAlignment.CENTER #Alinhamento vertical
 
+
     page.padding = 50 #largura da margem de todos os lados
     #ou
     #page.padding = ft.padding.all() 
@@ -32,6 +33,7 @@ def main(page: ft.Page):
     page.window.resizable = True # Permite desativar o redimencionamento da tela do programa (por padrão fica True)
     page.window_top = 150 # Permite definir a distancia da janela de cima para baixo
     page.window_left = 560 # Permite definir a distancia da janela da esquerda para a direita
+    page.window_movable= True # Se ficar como False o usuário não consiguirá mover a janela do programa
     
     page.window.prevent_close = False # Se ficar como "True" a opção de fechar a janela no canto superior da janela fica sem ação, isso serve para adicionar um evento antes que o usuário feche a janela.
 
@@ -53,24 +55,24 @@ def main(page: ft.Page):
     
     """
 
-    def descricao_evento(e):
-        print(e.data)
-        match e.data:
-            case 'moved':
-                print('Moveu a página!')
-            case 'resized':
-                print('Alterou tamanho!')
-            case 'minimize':
-                print('Mininimou o programa!')
-            case 'unmaximize':
-                print('Voltou para tela normal')
-            case 'blur':
-                print('Perdeu o foco!')
+    # def descricao_evento(e):
+    #     print(e.data)
+    #     match e.data:
+    #         case 'moved':
+    #             print('Moveu a página!')
+    #         case 'resized':
+    #             print('Alterou tamanho!')
+    #         case 'minimize':
+    #             print('Mininimou o programa!')
+    #         case 'unmaximize':
+    #             print('Voltou para tela normal')
+    #         case 'blur':
+    #             print('Perdeu o foco!')
 
-            case _:
-                print('Outra ação!')
+    #         case _:
+    #             print('Outra ação!')
 
-    page.on_window_event = descricao_evento
+    # page.on_window_event = descricao_evento
 
 
 
